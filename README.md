@@ -4,9 +4,10 @@ This is just a little program I created to help people with some math.
 Updates will come in the future
 
 To get:
-1) Click on CODE
-2) Download zip file
-3) Extract folder to preferred destination
+1) Go to the releases section (should be on right side)
+2) Click on latest version
+3) Download zip file
+4) Extract folder to preferred destination
 
 How to use:
 1) Go to destination you extracted the folder to
