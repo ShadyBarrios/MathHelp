@@ -10,6 +10,6 @@ To get:
 
 How to use:
 1) Go to destination you extracted the folder to
-2) Click on "TrigHelpApplication"
+2) Click on "MathHelpApplication"
 
 Scott
