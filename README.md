@@ -1,7 +1,6 @@
 # TrigHelp
 THIS IS FOR WINDOWS ONLY (for now)
 This is just a little program I created to help people with some math.
-Thanks for checking it out.
 
 To get:
 1) Download ZIP File
