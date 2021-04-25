@@ -1,4 +1,4 @@
-# TrigHelp
+# MathHelp
 THIS IS FOR WINDOWS ONLY (for now)
 This is just a little program I created to help people with some math.
 Updates will come in the future
