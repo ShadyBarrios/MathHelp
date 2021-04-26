@@ -1,6 +1,6 @@
 # MathHelp
-THIS IS FOR WINDOWS ONLY (for now)
-This is just a little program I created to help people with some math.
+THIS IS FOR WINDOWS ONLY (unless you compile the source code on your own mac)
+Yeye math...
 Updates will come in the future
 
 To get:
