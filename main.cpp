@@ -2,12 +2,13 @@
 #include <iomanip> // cout manipulation
 #include <cmath> // pow and sqrt
 #include <cctype> // toupper
+#include <vector> // use vectors
+#include "cones\cones.h" // imports self-made cone class
 #include "triangleScottGB.h" // imports self-made triangle class (includes a namespace and some functions)
 #include "pythagoreanScottGB.h" // imports self-made pythagorean class
 #include "lawOfSinesScottGB.h" // imports self-made law of sines class
 #include "lawOfCosinesScottGB.h" // imports self-made law of cosines class
 #include "vectorsScottGb.h" // imports self-made vectors class (not array vectors, but trig vectors)
-
 
 struct tests{
     double score;
@@ -20,7 +21,6 @@ struct tests{
         name = title;
     }
 };
-
     
 /////////// verification methods
 void mainMenuVerify(int &); // done - verify input, overloaded by parameter type
@@ -29,6 +29,10 @@ void vectorMenuVerify(int &); // - verifies input for the vector menu
 void positiveVerify(double &); // done - makes sure # is positive
 void verify(double &); // done - verify the measurements
 void verify(char &); // done - verify restart choice
+void coneMenuVerify(int &); // 
+void coneVolumeMenuVerify(int &); // 
+void coneSATmenuVerify(int &); //
+void coneSALmenuVerify(int &); //
 ////////// menu methods
 void mainMenu(); // done - gives the choice between the 3 equations
 void pythagMenu(); // done - gives the user the choice to find regular side or hypotenuse
@@ -40,6 +44,16 @@ void cosineInfo(int); // done - user inputs known data
 void vectorMenu(); // - show possible choices for vector
 void regVectorInfo(); // done - gets the info for a regular vector
 void resultantVectorInfo(); // done - gets user input for vectors to create resultant vector
+void coneMenu(); // vol sat and sal //
+void coneVolumeMenu(); // vol h and r // 
+void coneVolInfo(); // takes in h and r //
+void coneVolhInfo(); // takes in vol and r //
+void coneVolrInfo(); // takes in vol and h //
+void coneSATmenu(); // sat and sh // 
+void coneSALmenu(); // sal sh and r // 
+void coneSAinfo(); // takes in r and l //
+void coneSAshInfo(); // takes in sa and r //
+void coneSALrInfo(); // takes in sal and l //
 bool doAgain(); // done - asks user if they want to do again
 //////////// logic verification methods
 void pythagLogic(double &, double &); // done -makes sure that the hypotenuse isnt smaller than a side length
@@ -53,6 +67,7 @@ lawOfCosines cosine;
 vectors vector1;
 vectors vector2;
 resultantVector resultant;
+cones cone;
 
 int main(){
     bool repeat;
@@ -61,7 +76,7 @@ int main(){
     double angleA, angleB, angleC;
     std::string goBack = "";
 
-    std::cout << "Triangle Trig Aid\nIMPORTANT: USE DEGREES\n";
+    std::cout << "Math Aid\nIMPORTANT: USE DEGREES\n";
     std::cout << "By Scott Gonzalez Barrios\n";
 
     do{
@@ -149,7 +164,7 @@ int main(){
                 vectorMenuVerify(choice);
 
                 if(choice == 4){
-                    std::cout << "\nGoing back to main menu...\n";
+                    std::cout << "\nReturning to main menu...\n";
                     throw goBack;
                 }
                 
@@ -170,8 +185,111 @@ int main(){
                     repeat = doAgain();
                 }
             }
-            else if(choice == 5){
-                std::cout << "Thank you for using my program.\n";
+            else if(choice == 5){ // cones
+                coneMenu();
+                std::cin >> choice;
+                coneMenuVerify(choice);
+                std::cout << std::endl;
+
+                if(choice == 1){
+                    coneVolumeMenu();
+                    std::cin >> choice;
+                    coneVolumeMenuVerify(choice);
+                    std::cout << std::endl;
+
+                    if(choice == 1){
+                        coneVolInfo();
+                        result = cone.findVolume();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Volume: " << result << std::endl;
+                    }
+                    else if (choice == 2){
+                        coneVolhInfo();
+                        result = cone.findHeight();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Height: " << result << std::endl;
+                    }
+                    else if (choice == 3){
+                        coneVolrInfo();
+                        result = cone.findRadiusVolume();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Radius: " << result << std::endl;
+                    }
+                    else if (choice == 4){
+                        std::cout << "Returning to main menu...\n";
+                        throw goBack;
+                    }
+                    repeat = doAgain();
+                }
+                else if(choice == 2){
+                    coneSATmenu();
+                    std::cin >> choice;
+                    coneSATmenuVerify(choice);
+                    std::cout << std::endl;
+
+                    if(choice == 1){
+                        coneSAinfo();
+                        result = cone.findSurfaceAreaT();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Total surface area: " << result << std::endl;
+                    }
+                    else if(choice == 2){
+                        coneSAshInfo();
+                        result = cone.findSlantHeightSAT();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Slant height: " << result << std::endl;
+                    }
+                    else if(choice == 3){
+                        std::cout << "Returning to main menu..." << std::endl;
+                        throw goBack;
+                    }
+                    repeat = doAgain();
+                }
+                else if(choice == 3){
+                    coneSALmenu();
+                    std::cin >> choice;
+                    coneSALmenuVerify(choice);
+                    std::cout << std::endl;
+
+                    if(choice == 1){
+                        coneSAinfo();
+                        result = cone.findSurfaceAreaL();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Lateral surface area: " << result << std::endl;
+                    }
+                    else if (choice == 2){
+                        coneSAshInfo();
+                        result = cone.findSlantHeightSAL();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Slant Height: " << result << std::endl;
+                    }
+                    else if (choice == 3){
+                        coneSALrInfo();
+                        result = cone.findRadiusSAL();
+                        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+                        std::cout << std::endl;
+                        std::cout << "Radius: " << result << std::endl;
+                    }
+                    else if (choice == 4){
+                        std::cout << "Returning to main menu..." << std::endl;
+                        throw goBack;
+                    }
+                    repeat = doAgain();
+                }
+                else if(choice == 4){
+                    std::cout << "Returning to main menu...\n";
+                    throw goBack;
+                }
+            }
+            else if(choice == 6){
+                
                 repeat = false;
             }
         }
@@ -179,6 +297,8 @@ int main(){
             repeat = true;
         }
     } while(repeat);
+
+    std::cout << "Thank you for using my program.\n";
 
     return 0;
 }
@@ -190,15 +310,16 @@ void mainMenu(){
     std::cout << "2) Law of Sines\n";
     std::cout << "3) Law of Cosines\n";
     std::cout << "4) Vectors\n";
-    std::cout << "5) Quit Program\n";
-    std::cout << "Choice (1-5): ";
+    std::cout << "5) Cones\n";
+    std::cout << "6) Quit Program\n";
+    std::cout << "Choice (1-6): ";
 }
 
 void pythagMenu(){
     std::cout << "Pythagorean Theorem\n";
     std::cout << "1) Find missing side length\n";
     std::cout << "2) Find missing hypotenuse\n";
-    std::cout << "3) Go back to main menu\n";
+    std::cout << "3) Return to main menu\n";
     std::cout << "Choice (1 - 3): ";
 }
 
@@ -257,7 +378,7 @@ void sineMenu(){
     std::cout << "Law of sines\n";
     std::cout << "1) Find missing side length\n";
     std::cout << "2) Find missing angle measurement\n";
-    std::cout << "3) Go back to main menu\n";
+    std::cout << "3) Return to main menu\n";
     std::cout << "Choice (1 - 3): ";
 }
 
@@ -340,7 +461,7 @@ void cosineMenu(){
     std::cout << "Law of cosines\n";
     std::cout << "1) Find missing side length\n";
     std::cout << "2) Find missing angle measurement\n";
-    std::cout << "3) Go back to main menu\n";
+    std::cout << "3) Return to main menu\n";
     std::cout << "Choice (1 - 3): ";
 }
 
@@ -421,7 +542,7 @@ void vectorMenu(){
     std::cout << "1) Find resultant vector of two vectors\n";
     std::cout << "2) Find magnitude of vector\n";
     std::cout << "3) Find angle of vector\n";
-    std::cout << "4) Go back to main menu\n";
+    std::cout << "4) Return to main menu\n";
     std::cout << "Choice (1 - 4): ";
 }
 
@@ -509,7 +630,6 @@ void vectorMenuVerify(int &choice){
     } while(flag);
 }
 
-
 void verify(double &choice){
     bool flag;
     
@@ -552,7 +672,191 @@ void positiveVerify(double &number){
     }while(flag);
 }
 
+void coneMenu(){
+    std::cout << "Cones:\n";
+    std::cout << "1) Volume\n";
+    std::cout << "2) Total Surface Area (base)\n";
+    std::cout << "3) Lateral Surface Area (no base)\n";
+    std::cout << "4) Return to main menu\n";
+    std::cout << "Choice (1 - 4): ";
+}
+
+void coneMenuVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 4){
+            std::cout << "Invalid choice... try again\n";
+            std::cout << "Choice (1 - 4): ";
+            std::cin >> choice;
+            flag = true;
+        }
+    }while(flag);
+}
+
+void coneVolumeMenu(){
+    std::cout << "Volume:\n";
+    std::cout << "1) Find volume\n";
+    std::cout << "2) Find height\n";
+    std::cout << "3) Find radius\n";
+    std::cout << "4) Return to main menu\n";
+    std::cout << "Choice (1 - 4): ";
+}
+
+void coneVolumeMenuVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 4){
+            std::cout << "Invalid choice... try again\n";
+            std::cout << "Choice (1 - 4): ";
+            std::cin >> choice;
+            flag = true;
+        }
+    }while(flag);
+}
+
+void coneVolInfo(){
+    double h, r;
+    std::cout << "Input the following information:\n";
+    std::cout << "Height: ";
+    std::cin >> h;
+    positiveVerify(h);
+    cone.setHeight(h);
+
+    std::cout << "Radius: ";
+    std::cin >> r;
+    positiveVerify(r);
+    cone.setRadius(r); 
+}
+
+void coneVolhInfo(){
+    double r, v;
+    std::cout << "Input the following information:\n";
+    std::cout << "Radius: ";
+    std::cin >> r;
+    positiveVerify(r);
+
+    std::cout << "Volume: ";
+    std::cin >> v;
+    positiveVerify(v);
+
+    cone.setRadius(r);
+    cone.setVolume(v);
+}
+
+void coneVolrInfo(){
+    double h, v;
+    std::cout << "Input the following information:\n";
+    std::cout << "Height: ";
+    std::cin >> h;
+    positiveVerify(h);
+
+    std::cout << "Volume: ";
+    std::cin >> v;
+    positiveVerify(v);
+
+    cone.setHeight(h);
+    cone.setVolume(v);
+}
+
+void coneSAinfo(){
+    double r, l;
+
+    std::cout << "Input the following information:\n";
+    std::cout << "Slant Height: ";
+    std::cin >> l;
+    positiveVerify(l);
+
+    std::cout << "Radius: ";
+    std::cin >> r;
+    positiveVerify(r);
+
+    cone.setRadius(r);
+    cone.setSlantHeight(l);
+}
+
+void coneSAshInfo(){
+    double sa, r;
+
+    std::cout << "Input the following information:\n";
+    std::cout << "Surface Area: ";
+    std::cin >> sa;
+    positiveVerify(sa);
+
+    std::cout << "Radius: ";
+    std::cin >> r;
+    positiveVerify(r);
+
+    cone.setRadius(r);
+    cone.setSurfaceArea(sa);
+}
+
+void coneSALrInfo(){
+    double sal, l;
+
+    std::cout << "Input the following information:\n";
+    std::cout << "Lateral Surface Area: ";
+    std::cin >> sal;
+    positiveVerify(sal);
+
+    std::cout << "Slant height: ";
+    std::cin >> l;
+    positiveVerify(l);
+
+    cone.setSlantHeight(l);
+    cone.setSurfaceArea(sal);
+}
+
+void coneSATmenu(){
+    std::cout << "Total Surface Area:\n";
+    std::cout << "1) Find total surface area\n";
+    std::cout << "2) Find slant height\n";
+    std::cout << "3) Return to main menu\n";
+    std::cout << "Choice (1 - 3): ";
+}
+
+void coneSATmenuVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 3){
+            std::cout << "Invalid choice... try again\n";
+            std::cout << "Choice (1 - 3): ";
+            std::cin >> choice;
+            flag = true;
+        }
+    }while(flag);
+}
+
+void coneSALmenu(){
+    std::cout << "Lateral Surface Area:\n";
+    std::cout << "1) Find lateral surface area\n";
+    std::cout << "2) Find slant height\n";
+    std::cout << "3) Find radius\n";
+    std::cout << "4) Return to main menu\n";
+    std::cout << "Choice (1 - 4): ";
+}
+
+void coneSALmenuVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 4){
+            std::cout << "Invalid choice... try again\n";
+            std::cout << "Choice (1 - 4): ";
+            std::cin >> choice;
+            flag = true;
+        }
+    }while(flag);
+}
+
 bool doAgain(){
+
     char daChar;
     bool repeat;
 
