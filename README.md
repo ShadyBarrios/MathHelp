@@ -8,7 +8,7 @@ To get:
 2) Click on latest version
 3) Download zip file
 4) Open the windowsDownloader html file
-5) On google drive, download MathHelpApplication.zip (There will be warnings but just override them)
+5) On Google Drive, download MathHelpApplication.zip (There will be warnings but just override them)
 6) Extract the file into your preferred directory (folder)
 
 How to use:
