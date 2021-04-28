@@ -1,6 +1,7 @@
 # MathHelp
 Yeye math...
 Updates will come in the future
+Please report bugs or suggest ideas in the issues tab.
 
 To get:
 1) Go to the releases section (should be on right side)
