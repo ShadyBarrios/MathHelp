@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 
-class pyramid : public work {
+class pyramid : public pyramidWork {
 private:
     virtual double findBaseArea(){}
 protected:
@@ -45,9 +45,9 @@ public:
 
         volumeStep2(product);
 
-        result = product / 2;
+        result = product / 3.0;
 
-        volumeStep3(product);
+        volumeStep3(result);
 
         volume = result;
 
@@ -73,7 +73,7 @@ public:
         return result;
     }
 
-    double findTotal(){
+    double findTotal(){ // total = 1/2 * p * sh + ba
         double product, result;
 
         totalFormat();
@@ -98,7 +98,7 @@ public:
         volumeFormat();
         heightVolumeStep1();
 
-        product = baseArea * 0.5;
+        product = baseArea / 3.0;
 
         heightVolumeStep2(product);
 
@@ -117,7 +117,7 @@ public:
         volumeFormat();
         baseAreaVolumeStep1();
 
-        product = height / 2.0;
+        product = height / 3.0;
 
         baseAreaVolumeStep2(product);
 
@@ -149,7 +149,7 @@ public:
         return result;
     }
 
-    double findSlantLateral(){
+    double findSlantHeightLateral(){
         double product, result;
 
         lateralFormat();
@@ -187,13 +187,13 @@ public:
         return result;
     }
 
-    double findPerimeterTotal(){
+    double findPerimeterTotal(){ // total = 1/2 p sh + ba
         double product, difference, result;
 
         totalFormat();
         perimeterTotalStep1();
 
-        product = perimeter / 2.0;
+        product = slantHeight / 2.0;
         difference = total - baseArea;
 
         perimeterTotalStep2(product, difference);
@@ -228,7 +228,7 @@ public:
     }
 };
 
-class squarePyramid : protected pyramid{
+class squarePyramid : public pyramid{
 private:
     virtual double findBaseArea(){
         double a;
@@ -245,7 +245,7 @@ public:
     squarePyramid() : pyramid() {}
 };
 
-class trianglePyramid : protected pyramid{
+class trianglePyramid : public pyramid{
 private:
     virtual double findBaseArea(){
         double a;
