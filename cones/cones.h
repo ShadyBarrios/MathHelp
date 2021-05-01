@@ -14,7 +14,7 @@ class cones : private work{
 private:
     // variables inherited from work
 public:
-    cone(){
+    cones(){
         height = 0.0;
         slantHeight = 0.0;
         surfaceArea = 0.0;
