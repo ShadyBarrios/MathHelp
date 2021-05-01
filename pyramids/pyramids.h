@@ -17,18 +17,22 @@ public:
         height = 0.0;
         baseLength = 0.0;
         baseWidth = 0.0;
+        baseHypotenuse = 0.0;
         volume = 0.0;
         lateral = 0.0;
         total = 0.0;
     }
-    void setBaseArea(double ba){baseArea = findBaseArea();}
+    void setBaseArea(double ba){baseArea = ba;}
+    void setBaseArea(){baseArea = findBaseArea();}
     void setSlantHeight(double sl){slantHeight = sl;}
     void setHeight(double h){height = h;}
     void setBaseLength(double bl){baseLength = bl;}
     void setBaseWidth(double bw){baseWidth = bw;}
+    void setBaseHypotenuse(double bh){baseHypotenuse = bh;}
     void setVolume(double v){volume = v;}
     void setLateral(double l){lateral = l;}
     void setTotal(double t){total = t;}
+    void setBaseHeight(double bh){baseHeight = bh;}
 
     double findVolume(){
         double product, result;
