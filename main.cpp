@@ -30,6 +30,7 @@ void vectorMenuVerify(int &); // - verifies input for the vector menu
 void positiveVerify(double &); // done - makes sure # is positive
 void verify(double &); // done - verify the measurements
 void verify(char &); // done - verify restart choice
+void OneOrTwoVerify(int &);
 void coneMenuVerify(int &); // 
 void coneVolumeMenuVerify(int &); // 
 void coneSATmenuVerify(int &); //
@@ -57,22 +58,21 @@ void coneSAshInfo(); // takes in sa and r //
 void coneSALrInfo(); // takes in sal and l //
 void pyramidMenu(); // DONE
 void pyramidMenuVerify(int &); // DONE
-void pyramidVolumeMenu(); // NOT DONE -  use submenu verify
-void pyramidLateralMenu(); // NOT DONE - sq and tri have the same optoins
-void pyramidTotalMenu(); // NOTE DONE - create own verify, sq and tri have to same options
-void pyramidTotalMenuVerify(int &); // NOT DONE
+void pyramidVolumeMenu(); // DONE -  use submenu verify
+void pyramidLateralMenu(); // DONE - sq and tri have the same optoins use sub menu verify
+void pyramidTotalMenu(); // DONE - create own verify, sq and tri have to same options
+void pyramidTotalMenuVerify(int &); // DONE
 void pyramidMenu2(); // DONE - must include the type of pyramid in main
-void pyramidMenu2Verify(int &); // NOT DONE
-void pyramidVolVolumeInfo(); // DONE DONE - volume for volume info
-void pyramidBaVolumeInfo(); // NOT DONE - base area for volume info
-void pyramidHeVolumeInfo(); // NOT DONE - height for volume info
-void pyramidLaLateralInfo(); // NOT DONE - lateral for lateral info
-void pyramidPeLateralInfo(); // NOT DONE - perimeter for lateral info
-void pyramidShLateralInfo(); // NOT DONE - slant height for lateral info
-void pyramidToTotalInfo(); // NOT DONE - total for total info
-void pyramidPeTotalInfo(); // NOTE DONE - perimeter for total info
-void pyramidShTotalInfo(); // NOT DONE - slant for total info
-void pyramidBaTotalInfo(); // NOT DONE - base area for total info
+void pyramidVolVolumeInfo(int); // DONE - volume for volume info
+void pyramidBaVolumeInfo(int); // NOT DONE - base area for volume info
+void pyramidHeVolumeInfo(int); // NOT DONE - height for volume info
+void pyramidLaLateralInfo(int); // NOT DONE - lateral for lateral info
+void pyramidPeLateralInfo(int); // NOT DONE - perimeter for lateral info
+void pyramidShLateralInfo(int); // NOT DONE - slant height for lateral info
+void pyramidToTotalInfo(int); // NOT DONE - total for total info
+void pyramidPeTotalInfo(int); // NOTE DONE - perimeter for total info
+void pyramidShTotalInfo(int); // NOT DONE - slant for total info
+void pyramidBaTotalInfo(int); // NOT DONE - base area for total info
 bool doAgain(); // done - asks user if they want to do again
 //////////// logic verification methods
 void pythagLogic(double &, double &); // done -makes sure that the hypotenuse isnt smaller than a side length
@@ -896,6 +896,7 @@ void pyramidMenuVerify(int &choice){
             std::cout << "Invalid choice... try again\n";
             std::cout << "Choice (1 - 2): ";
             std::cin >> choice;
+            flag = true;
         }
     }while(flag);
 }
@@ -907,7 +908,191 @@ void pyramidMenu2(){
     std::cout << "Choice (1 - 3): "; // submenu verify takes care of it
 }
 
-void 
+void pyramidVolumeMenu(){
+    std::cout << "1) Find volume\n";
+    std::cout << "2) Find base-area\n";
+    std::cout << "3) Find height\n";
+    std::cout << "Choice (1 - 3): ";
+}
+
+void pyramidLateralMenu(){
+    std::cout << "1) Find lateral surface area\n";
+    std::cout << "2) Find perimeter\n";
+    std::cout << "3) Find slant height\n";
+    std::cout << "Choice (1 - 3): ";
+}
+
+void pyramidTotalMenu(){
+    std::cout << "1) Find lateral surface area\n";
+    std::cout << "2) Find perimeter\n";
+    std::cout << "3) Find slant height\n";
+    std::cout << "4) Find base-area\n";
+    std::cout << "Choice (1 - 4): ";
+}
+
+void pyramidTotalMenuVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 4){
+            std::cout << "Invalid input... try again\n";
+            std::cout << "Choice (1 - 4): ";
+            std::cin >> choice;
+            flag = true;
+        }
+    }while (flag);
+}
+
+void pyramidVolVolumeInfo(int type){
+    int choice;
+    double b, h, bh, l, w, bhyp;
+    std::cout << "Enter the following information:\n";
+    std::cout << "Base-area info: ";
+    std::cout << "\tDo you already have the base area or do you need it calculated?\n";
+    std::cout << "\t1) Already known\n";
+    std::cout << "\t2) Need calculated\n";
+    std::cout << "Choice (1 - 2): ";
+    std::cin >> choice;
+    oneOrTwoVerify(choice);
+    
+    if(choice == 1){ // they do have it 
+        std::cout << "Base area: ";
+        std::cin >> b;
+        positiveVerify(b);
+        if(type == 1)
+            sqPyramid.setBaseArea(b);
+        else    
+            triPyramid.setBaseArea(b);
+    }
+    else{
+        if(type == 1){ // sq
+            std::cout << "Base Length: ";
+            std::cin >> l;
+            positiveVerify(l);
+            std::cout << "Base Width: ";
+            std::cin >> w;
+            positiveVerify(w);
+            sqPyramid.setBaseLength(l);
+            sqPyramid.setBaseWidth(w);
+            sqPyramid.setBaseArea(); 
+        }
+        else{ // gets info for the tri pyramid
+            std::cout << "Base hypotenuse length: ";
+            std::cin >> bhyp;
+            positiveVerify(bhyp);
+            std::cout << "Base height: ";
+            std::cin >> bh;
+            positiveVerify(bh);
+            sqPyramid.setBaseLength(bhyp);
+            sqPyramid.setBaseHeight(bh);
+            triPyramid.setBaseArea();
+        }
+    }
+    
+    std::cout << "Pyramid height: ";
+    std::cin >> h;
+    positiveVerify(h);
+
+    if(type == 1){
+        sqPyramid.setHeight(h);
+    }
+    else{   
+        triPyramid.setHeight(h);
+    }
+}
+
+void pyramidBaVolumeInfo(int type){
+    double h, v;
+    std::cout << "Enter the following information:\n";
+    std::cout << "Volume: ";
+    std::cin >> v;
+    positiveVerify(v);
+
+    std::cout << "Height: ";
+    std::cin >> h;
+    positiveVerify(h);
+
+    if(type == 1){ // sq
+        sqPyramid.setVolume(v); 
+        sqPyramid.setHeight(h);
+    }
+    else{
+        triPyramid.setVolume(v);
+        sqPyramid.setHeight(h);
+    }
+}
+
+void pyramidHeVolumeInfo(int type){
+    int choice;
+    double v, b, bh, l, w, bhyp;
+    std::cout << "Enter the following information:\n";
+    std::cout << "Base-area info: ";
+    std::cout << "\tDo you already have the base area or do you need it calculated?\n";
+    std::cout << "\t1) Already known\n";
+    std::cout << "\t2) Need calculated\n";
+    std::cout << "Choice (1 - 2): ";
+    std::cin >> choice;
+    oneOrTwoVerify(choice);
+    
+    if(choice == 1){ // they do have it 
+        std::cout << "Base area: ";
+        std::cin >> b;
+        positiveVerify(b);
+        if(type == 1)
+            sqPyramid.setBaseArea(b);
+        else    
+            triPyramid.setBaseArea(b);
+    }
+    else{
+        if(type == 1){ // sq
+            std::cout << "Base Length: ";
+            std::cin >> l;
+            positiveVerify(l);
+            std::cout << "Base Width: ";
+            std::cin >> w;
+            positiveVerify(w);
+            sqPyramid.setBaseLength(l);
+            sqPyramid.setBaseWidth(w);
+            sqPyramid.setBaseArea(); 
+        }
+        else{ // gets info for the tri pyramid
+            std::cout << "Base hypotenuse length: ";
+            std::cin >> bhyp;
+            positiveVerify(bhyp);
+            std::cout << "Base height: ";
+            std::cin >> bh;
+            positiveVerify(bh);
+            sqPyramid.setBaseLength(bhyp);
+            sqPyramid.setBaseHeight(bh);
+            triPyramid.setBaseArea();
+        }
+    }
+
+    std::cout << "Pyramid volume: ";
+    std::cin >> v;
+    positiveVerify(v);
+
+    if(type == 1) {
+        sqPyramid.setVolume(v);
+    }
+    else    
+        triPyramid.setVolume(v);
+}
+
+void oneOrTwoVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 2){
+            std::cout << "Invalid input... try again\n";
+            std::cout << "Choice (1 - 2): ";
+            std::cin >> choice;
+            flag = true;
+        }
+    }while(flag);
+}
 bool doAgain(){
 
     char daChar;
