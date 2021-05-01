@@ -4,6 +4,7 @@
 #include <cctype> // toupper
 #include <vector> // use vectors
 #include "cones\cones.h" // imports self-made cone class
+#include "pyramids\pyramids.h"
 #include "triangleScottGB.h" // imports self-made triangle class (includes a namespace and some functions)
 #include "pythagoreanScottGB.h" // imports self-made pythagorean class
 #include "lawOfSinesScottGB.h" // imports self-made law of sines class
@@ -54,6 +55,24 @@ void coneSALmenu(); // sal sh and r //
 void coneSAinfo(); // takes in r and l //
 void coneSAshInfo(); // takes in sa and r //
 void coneSALrInfo(); // takes in sal and l //
+void pyramidMenu(); // DONE
+void pyramidMenuVerify(int &); // DONE
+void pyramidVolumeMenu(); // NOT DONE -  use submenu verify
+void pyramidLateralMenu(); // NOT DONE - sq and tri have the same optoins
+void pyramidTotalMenu(); // NOTE DONE - create own verify, sq and tri have to same options
+void pyramidTotalMenuVerify(int &); // NOT DONE
+void pyramidMenu2(); // DONE - must include the type of pyramid in main
+void pyramidMenu2Verify(int &); // NOT DONE
+void pyramidVolVolumeInfo(); // DONE DONE - volume for volume info
+void pyramidBaVolumeInfo(); // NOT DONE - base area for volume info
+void pyramidHeVolumeInfo(); // NOT DONE - height for volume info
+void pyramidLaLateralInfo(); // NOT DONE - lateral for lateral info
+void pyramidPeLateralInfo(); // NOT DONE - perimeter for lateral info
+void pyramidShLateralInfo(); // NOT DONE - slant height for lateral info
+void pyramidToTotalInfo(); // NOT DONE - total for total info
+void pyramidPeTotalInfo(); // NOTE DONE - perimeter for total info
+void pyramidShTotalInfo(); // NOT DONE - slant for total info
+void pyramidBaTotalInfo(); // NOT DONE - base area for total info
 bool doAgain(); // done - asks user if they want to do again
 //////////// logic verification methods
 void pythagLogic(double &, double &); // done -makes sure that the hypotenuse isnt smaller than a side length
@@ -68,6 +87,8 @@ vectors vector1;
 vectors vector2;
 resultantVector resultant;
 cones cone;
+squarePyramid sqPyramid;
+trianglePyramid triPyramid;
 
 int main(){
     bool repeat;
@@ -289,6 +310,9 @@ int main(){
                 }
             }
             else if(choice == 6){
+                // pyramid stuff
+            }
+            else if(choice == 7){
                 
                 repeat = false;
             }
@@ -311,7 +335,8 @@ void mainMenu(){
     std::cout << "3) Law of Cosines\n";
     std::cout << "4) Vectors\n";
     std::cout << "5) Cones\n";
-    std::cout << "6) Quit Program\n";
+    std::cout << "6) Pyramids\n";
+    std::cout << "7) Quit Program\n";
     std::cout << "Choice (1-6): ";
 }
 
@@ -593,9 +618,9 @@ void mainMenuVerify(int &choice){
     
     do{
         flag = false;
-        if(choice < 1 || choice > 6){
+        if(choice < 1 || choice > 7){
             std::cout << "That is an invalid option\n";
-            std::cout << "Please try again (1 - 6): ";
+            std::cout << "Please try again (1 - 7): ";
             std::cin >> choice;
             flag = true;
         }
@@ -855,6 +880,34 @@ void coneSALmenuVerify(int &choice){
     }while(flag);
 }
 
+void pyramidMenu(){
+    std::cout << "Pyramids\n";
+    std::cout << "1) Square pyramids\n";
+    std::cout << "2) Triangle pyramids\n";
+    std::cout << "Choice (1 - 2): ";
+}
+
+void pyramidMenuVerify(int &choice){
+    bool flag;
+
+    do{
+        flag = false;
+        if(choice < 1 || choice > 2){
+            std::cout << "Invalid choice... try again\n";
+            std::cout << "Choice (1 - 2): ";
+            std::cin >> choice;
+        }
+    }while(flag);
+}
+
+void pyramidMenu2(){
+    std::cout << "1) Volume\n";
+    std::cout << "2) Lateral Surface Area\n";
+    std::cout << "3) Total Surface Area\n";
+    std::cout << "Choice (1 - 3): "; // submenu verify takes care of it
+}
+
+void 
 bool doAgain(){
 
     char daChar;
