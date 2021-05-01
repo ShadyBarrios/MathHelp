@@ -4,29 +4,29 @@
 #include <iostream>
 #include <iomanip>
 
-class work{
+class pyramidWork{
 
 protected:
-    double baseArea, slantHeight, perimeter, height, baseLength, baseWidth, volume, lateral, total;
+    double baseArea, baseHypotenuse, baseHeight, slantHeight, perimeter, height, baseLength, baseWidth, volume, lateral, total;
 
     // volume
     void volumeFormat(){
-        std::cout << "\nVolume = 1/2 * base area * height\n" << std::endl;
+        std::cout << "\nVolume = 1/3 * base area * height\n" << std::endl;
         std::cout << std::fixed << std::showpoint << std::setprecision(2); 
     }
 
     void volumeStep1(){
-        std::cout << "Volume = 1/2 * " << baseArea << " * " << height << std::endl << std::endl;
+        std::cout << "Volume = 1/3 * " << baseArea << " * " << height << std::endl << std::endl;
     }
     void volumeStep2(double product){
-        std::cout << "Volume = 1/2 * " << product << std::endl << std::endl;
+        std::cout << "Volume = 1/3 * " << product << std::endl << std::endl;
     }
     void volumeStep3(double result){
         std::cout << "Volume = " << result << std::endl << std::endl;
     }
 
     void heightVolumeStep1(){
-        std::cout << volume << " = 1/2 * " << baseArea << " * height\n" << std::endl; 
+        std::cout << volume << " = 1/3 * " << baseArea << " * height\n" << std::endl; 
     }
     void heightVolumeStep2(double product){
         std::cout << volume << " = " << product << " * height" << std::endl << std::endl;
@@ -36,7 +36,7 @@ protected:
     }
 
     void baseAreaVolumeStep1(){
-        std::cout << volume << " = 1/2 * base area * " << height << std::endl << std::endl;
+        std::cout << volume << " = 1/3 * base area * " << height << std::endl << std::endl;
     }
     void baseAreaVolumeStep2(double product){
         std::cout << volume << " = " << product << " * base area\n" << std::endl << std::endl;
@@ -85,6 +85,7 @@ protected:
     // total
     void totalFormat(){
         std::cout << "Total surface area = 1/2 * perimeter * slant height + base area\n" << std::endl;
+        std::cout << std::fixed << std::showpoint << std::setprecision(2);
     }
 
     void totalStep1(){
@@ -94,7 +95,7 @@ protected:
         std::cout << "Total SA = " << product << " + " << baseArea << std::endl << std::endl;
     }
     void totalStep3(double result){
-        std::cout << "Total SA = " << result;
+        std::cout << "Total SA = " << result << std::endl << std::endl;
     }
 
     void baseAreaTotalStep1(){
@@ -108,7 +109,7 @@ protected:
     }
 
     void perimeterTotalStep1(){
-        std::cout << total << " = (1/2 * perimeter * " << slantHeight << ") + base area\n" << std::endl;
+        std::cout << total << " = (1/2 * perimeter * " << slantHeight << ") + " << baseArea << std::endl << std::endl;
     }
     void perimeterTotalStep2(double product, double difference){
         std::cout << difference << " = " << product << " * perimeter\n" << std::endl;
