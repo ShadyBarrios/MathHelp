@@ -24,6 +24,7 @@ public:
     }
     void setBaseArea(double ba){baseArea = ba;}
     void setBaseArea(){baseArea = findBaseArea();}
+    void setPerimeter(double p){perimeter = p;}
     void setSlantHeight(double sl){slantHeight = sl;}
     void setHeight(double h){height = h;}
     void setBaseLength(double bl){baseLength = bl;}
@@ -53,7 +54,7 @@ public:
         return result;
     }
 
-    double findLateral(){
+    double findLateral(){ // l = 1/2 * p * sh
         double product, result;
 
         lateralFormat();
