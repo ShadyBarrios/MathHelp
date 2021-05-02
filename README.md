@@ -4,17 +4,18 @@ Updates will come in the future
 Please report bugs or suggest ideas in the issues tab.
 
 To get:
-1) Go to the releases section (should be on right side)
-2) Click on latest version
-3) Download zip file
-4) Open the Downloader html file
-5) On Google Drive, click on the folder that corresponds to your operating system 
-6) Download the zip file (There will be warnings but just override them; Mac is little bit more complicated so check the bottom)
-7) Extract the file into your preferred directory (folder)
+1) Go to https://shadybarrios.github.io/MathHelp/
+2) Click on your operating system, the download will start automatically
+3) On chrome, click the ^ arrow and click "keep"
+4) Override the security features (instructions below)
 
 How to use:
 1) Go to destination you extracted the folder to
 2) Click on "MathHelpApplication"
+
+How to override settings on Windows when opening application:
+1) Click on "More info"
+2) Click on "Run anyways"
 
 How to override settings on MacOS when opening application:
 1) Click on the apple icon (top left corner)
