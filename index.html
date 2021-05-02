@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Thanks for downloading!</title>
+        <link rel="icon" type="image/png" href="images/icon32x32.png">
+        <meta name="Author" content="Shady Barrios">
+        <meta name="Description" content="To download zips for program">
+        <meta name="Viewport" content="width = device-width, initial-scale = 1"> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: #a09c9c;
+                height:auto;
+                margin: 5% 30%;
+            }
+            h1, h2{
+                font-family: 'Marriweather', serif;
+                text-align: center;
+                margin-left: 2%;
+                letter-spacing: 0.5px;
+            }
+            h1{margin-right: 0.5%; font-size:40px;}
+            h2{margin-bottom:5%;}
+            #os{
+                padding:20%;
+            }
+            #windows{
+                float: left;
+                width:50%;
+                text-align:center;
+            }
+            #macOS{
+                width: 50%;
+                float: right;
+                text-align: center;
+            }
+            #windows img{
+                width: 80%;
+                border-style:solid;
+                border-color:#111111;
+            }
+            #windows img:hover{
+                background-color: #616060;
+                border-style:ridge;
+                border-color:#111111;
+                width:78%;
+            }
+            #macOS img{
+                border-style:solid;
+                border-color:#111111;
+                width: 80%;
+            }
+            #macOS img:hover{
+                background-color: #616060;
+                border-style:solid;
+                border-color:#111111;
+                width:78%;
+            }
+            footer{
+                clear:both;
+                width:100%;
+                float:left;
+                margin: 10% 5% 90% 5%;
+                font-size: 18px;
+                font-weight:bold;
+                letter-spacing:0.25px;
+            }
+            footer a{
+                text-decoration-color:#a09c9c;
+                color:#2e448d; 
+                width: 1%;
+            }
+            #patches:hover, footer a:hover{
+                background-color: #616060;
+                text-decoration-color:#616060;
+                text-decoration-line: 10%;
+            }
+            #patches:hover{
+                color:#7684b4;
+            }
+            #patchSection{
+                width:16%;
+            }
+        </style>
+    </head>
+    <header>
+        <h1>Thanks for downloading!</h1>
+    </header>
+    <body>
+        <h2>Choose Your Operating System</h2>
+        <div class="os">
+            <div id="windows">
+                <a href="zips/MathHelpApplicationWindows.zip"><img src = "images/windowsLogo.svg"></a>
+            </div>
+            <div id="macOS">
+                <a href="zips/MathHelpApplicationMac.zip"><img src = "images/appleLogo.svg"></a>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <p>Math Application</p>
+        <div id="patchSection">
+            <a href = "patchNotes.html"><p id="patches">Patch Notes</p></a>
+        </div>
+        
+    </footer>
+     
+</html>
