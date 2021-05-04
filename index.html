@@ -15,7 +15,7 @@
                 margin: 5% 30%;
             }
             h1, h2{
-                font-family: 'Marriweather', serif;
+                font-family: 'Merriweather', serif;
                 text-align: center;
                 margin-left: 2%;
                 letter-spacing: 0.5px;
@@ -42,7 +42,7 @@
             }
             #windows img:hover{
                 background-color: #616060;
-                border-style:ridge;
+                border-style:solid;
                 border-color:#111111;
                 width:78%;
             }
@@ -59,7 +59,7 @@
             }
             footer{
                 clear:both;
-                width:100%;
+                width:30%;
                 float:left;
                 margin: 10% 5% 90% 5%;
                 font-size: 18px;
@@ -69,23 +69,28 @@
             footer a{
                 text-decoration-color:#a09c9c;
                 color:#2e448d; 
-                width: 1%;
             }
             #patches:hover, footer a:hover{
-                background-color: #616060;
-                text-decoration-color:#616060;
+                text-decoration-color:#a09c9c;
                 text-decoration-line: 10%;
             }
             #patches:hover{
-                color:#7684b4;
+                color:#5165a2;
             }
-            #patchSection{
-                width:16%;
+            span{
+                opacity: 0;
+                font-size: 1px;
+            }
+
+            span.fade{
+                transition: all 0.4s ease;
+                font-size: 40px;
+                opacity: 1;
             }
         </style>
     </head>
     <header>
-        <h1>Thanks for downloading!</h1>
+        <h1 class="animateIn">Thanks for downloading!</h1>
     </header>
     <body>
         <h2>Choose Your Operating System</h2>
@@ -97,6 +102,7 @@
                 <a href="zips/MathHelpApplicationMac.zip"><img src = "images/appleLogo.svg"></a>
             </div>
         </div>
+        <script src = "animate.js"></script>
     </body>
     <footer>
         <p>Math Application</p>
