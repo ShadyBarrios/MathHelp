@@ -1,120 +1,116 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Thanks for downloading!</title>
+        <title>Patch Notes</title>
+        <meta charset = "UTF-8">
         <link rel="icon" type="image/png" href="images/icon32x32.png">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="Author" content="Shady Barrios">
         <meta name="Description" content="To download zips for program">
         <meta name="Viewport" content="width = device-width, initial-scale = 1"> 
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+        
         <style>
             body {
                 background-color: #a09c9c;
                 height:auto;
-                padding-left: 18%;
-                padding-right: 18%;
-                padding-top: 1%;
+                padding: 5%, 8%;
                 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
-            h1, h2{
+            #title{
                 text-align: center;
-                margin-left: 2%;
-                letter-spacing: 0.5px;
+                font-size: 40px;
             }
-            h1{margin-right: 0.5%; font-size:40px;}
-            h2{margin-bottom:5%;}
-            #os{
-                padding:20%;
-            }
-            #windows{
-                float: left;
-                width:50%;
+            nav{
                 text-align:center;
+                padding-right: 3.75%;
             }
-            #macOS{
-                width: 50%;
-                float: right;
-                text-align: center;
+            ul{
+                list-style-type:none;
+                padding-bottom:5%;
             }
-            #windows img{
-                width: 80%;
-                border-style:solid;
-                border-color:#111111;
-            }
-            #windows img:hover{
-                background-color: #616060;
-                border-style:solid;
-                border-color:#111111;
-                width:78%;
-            }
-            #macOS img{
-                border-style:solid;
-                border-color:#111111;
-                width: 80%;
-            }
-            #macOS img:hover{
-                background-color: #616060;
-                border-style:solid;
-                border-color:#111111;
-                width:78%;
-            }
-            footer{
-                clear:both;
-                width:30%;
-                float:left;
-                margin-top: 2%;
-                margin-bottom: 5%;
-                margin-right: 90%;
-                margin-left: 5%;
-                font-size: 18px;
-                font-weight:bold;
-                letter-spacing:0.25px;
-            }
-            footer a{
+            a{
                 text-decoration-color:#a09c9c;
-                color:#2e448d; 
+                color: rgb(68, 68, 68);
+                padding-left: 4%;
             }
-            #patches:hover, footer a:hover{
+            a:hover{
                 text-decoration-color:#a09c9c;
-                text-decoration-line: 10%;
+                color: #645a5a;
+                background-color:#a09c9c;
+                
             }
-            #patches:hover{
-                color:#5165a2;
+            .patchVersion{
+                padding-left:12%;
+                padding-right:50%;
+                text-align:left;
+            }
+            .description{
+                text-align:left;
+                padding-left:20%;
+                padding-right:20%;
+            }
+            .date{
+                padding-left:12%;
+                padding-right:50%;
+                text-align:left;
+                color:#363434;
+            }
+            .animateIn{
+                display:inline;
+                padding-left:12%;
+                padding-right:0%;
+                text-align:left;
+                font-size:28px;
+                color:rgb(155, 135, 20);
+                -webkit-text-stroke-width: 1.15px;
+                -webkit-text-stroke-color: black;
             }
             span{
                 opacity: 0;
-                font-size: 1px;
+                transition: all 0.4s ease;
+                transform: translateY(30px);
+                display: inline-block;
             }
 
             span.fade{
-                transition: all 0.35s ease;
-                font-size: 40px;
                 opacity: 1;
+                transform: translateY(0px);
             }
         </style>
     </head>
-    <header>
-        <h1 class="animateIn">Thanks for downloading!</h1>
-    </header>
+    
     <body>
-        <h2>Choose Your Operating System</h2>
-        <div class="os">
-            <div id="windows">
-                <a href="zips/MathHelpApplicationWindows.zip"><img src = "images/windowsLogo.svg"></a>
-            </div>
-            <div id="macOS">
-                <a href="zips/MathHelpApplicationMac.zip"><img src = "images/appleLogo.svg"></a>
-            </div>
-        </div>
-        <script src = "animate.js"></script>
-    </body>
-    <footer>
-        <p>Math Application</p>
-        <div id="patchSection">
-            <a href = "patchNotes.html"><p id="patches">Patch Notes</p></a>
-        </div>
         
-    </footer>
-     
+        <h1 id = "title">Patch Notes</h1>
+        <nav>
+            <h4><a href = "index.html">Return to downloader screen</a></h4>
+        </nav>
+            
+        <h3 class = "animateIn">Newest &#8595</h3>
+        <h3 class="patchVersion">Version 1.02.10</h3>
+        <h5 class="date">05/01/2021</h5>
+        <p class="description">The application can now be downloaded directly off of https://shadybarrios.github.io/MathHelp/ without the need to download the source code.</p>
+        <h3 class="patchVersion">Version 1.02.00</h3>
+        <h5 class="date">04/30/2021</h5>
+        <p class="description">Pyramid functionality has been added to the program.
+            It can handle both triangular and square-based pyramids.
+            It can do volume (and all it's components), lateral surface area (and all its components), and total surface area (and all its components).</p>
+        <h3 class="patchVersion">Version 1.01.10</h3>
+        <h5 class="date">04/27/2021</h5>
+        <p class="description">MacOS users can now (hopefully) download and use the program without the need to compile on their own device! Also some changes to the read me section >.< </p>
+        <h3 class="patchVersion">Version 1.01.01</h3>
+        <h5 class="date">04/27/2021</h5>
+        <p class="description">Fixed some issues (hopefully) regarding the .exe file.</p>
+        <h3 class="patchVersion">Version 1.01.00</h3>
+        <h5 class="date">04/26/2021</h5>
+        <p class="description">This release adds cone functionality and makes minor changes to the UI. Let me know if there are any bugs</p>
+        <h3 class="patchVersion">Version 1.00.00</h3>
+        <h5 class="date">04/26/2021</h5>
+        <p class="description">First version... many more to come...</p>
+        <script src="animate.js"></script>
+     </body>
+    
 </html>
+    
